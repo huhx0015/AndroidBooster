@@ -19,6 +19,7 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 #### Dependency Injection
 
+* ButterKnife: http://jakewharton.github.io/butterknife/
 * Dagger 2: https://github.com/google/dagger
 
 #### Event
