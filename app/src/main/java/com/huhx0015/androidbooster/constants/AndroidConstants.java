@@ -13,5 +13,5 @@ public class AndroidConstants {
     private static final String CURRENT_API_VERSION = "";
 
     // URL CONSTANTS:
-    public static final String API_URL = "https://api.doordash.com/" + CURRENT_API_VERSION;
+    public static final String API_URL = "https://api.test.com/" + CURRENT_API_VERSION;
 }
