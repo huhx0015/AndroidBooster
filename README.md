@@ -7,6 +7,8 @@ DEVELOPER: huhx0015
 
 Android Booster: This is a Android starter project that contains a basic MVP/MVVM/VIPER architecture framework and contains several popular Android libraries, including Databinding, Dagger 2, Retrofit 2, RxJava 2, ButterKnife, Glide, Picasso, Leak Canary, Timber, and other useful libraries.
 
+In addition, this project also includes several handy utility classes, as well as some basic test classes for testing ViewModel classes.
+
 ## Resources
 
 ### Libraries
