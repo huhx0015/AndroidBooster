@@ -5,7 +5,7 @@ DEVELOPER: huhx0015
 
 ## Description
 
-Android Booster: This is a Android starter project that contains a basic MVP/MVVM/VIPER architecture framework and contains several popular Android libraries, including Databinding, Dagger 2, Retrofit 2, RxJava 2, ButterKnife, Glide, Picasso, Leak Canary, Timber, and other useful libraries.
+Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/VIPER architecture framework and contains several popular Android libraries, including Databinding, Dagger 2, Retrofit 2, RxJava 2, ButterKnife, Glide, Picasso, Leak Canary, Timber, and other useful libraries.
 
 In addition, this project also includes several handy utility classes, as well as some basic test classes for testing ViewModel classes.
 
@@ -13,25 +13,51 @@ In addition, this project also includes several handy utility classes, as well a
 
 ### Libraries
 
-* Dagger 2: https://github.com/google/dagger
-* DaggerMock: https://github.com/fabioCollini/DaggerMock
-* Glide: https://github.com/bumptech/glide
+#### Audio
+
 * HX Audio Player: https://github.com/huhx0015/HXAudioPlayer
-* JUnit 4: https://github.com/junit-team/junit4
-* Picasso: http://square.github.io/picasso/
-* LeakCanary: https://github.com/square/leakcanary
-* Mockito: https://github.com/mockito/mockito
-* OkHttp 3: https://github.com/square/okhttp
-* Permissions Dispatcher: https://github.com/hotchemi/PermissionsDispatcher
-* RoundedImageView: https://github.com/vinc3m1/RoundedImageView
+
+#### Dependency Injection
+
+* Dagger 2: https://github.com/google/dagger
+
+#### Event
+
 * RxJava 2: https://github.com/ReactiveX/RxJava
 * RxAndroid: https://github.com/ReactiveX/RxAndroid
 * RxBinding: https://github.com/JakeWharton/RxBinding
+
+#### Images
+
+* Glide: https://github.com/bumptech/glide
+* Picasso: http://square.github.io/picasso/
+* RoundedImageView: https://github.com/vinc3m1/RoundedImageView
+* Subsampling Scale Image View: https://github.com/davemorrissey/subsampling-scale-image-view
+
+#### Logging
+
+* Timber: https://github.com/JakeWharton/timber
+
+#### Network
+
+* OkHttp 3: https://github.com/square/okhttp
 * Retrofit 2: http://square.github.io/retrofit/
+
+#### Performance
+
+* LeakCanary: https://github.com/square/leakcanary
+
+#### Permissions
+
+* Permissions Dispatcher: https://github.com/hotchemi/PermissionsDispatcher
+
+#### Testing
+
+* DaggerMock: https://github.com/fabioCollini/DaggerMock
+* JUnit 4: https://github.com/junit-team/junit4
+* Mockito: https://github.com/mockito/mockito
 * RESTMock: https://github.com/andrzejchm/RESTMock
 * Roboelectric: https://github.com/robolectric/robolectric
-* Subsampling Scale Image View: https://github.com/davemorrissey/subsampling-scale-image-view
-* Timber: https://github.com/JakeWharton/timber
 
 ## License
 
