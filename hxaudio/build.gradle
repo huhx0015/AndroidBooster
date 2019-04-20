@@ -1,2 +1,2 @@
 configurations.maybeCreate("default")
-artifacts.add("default", file('hxaudio-v325.aar'))
+artifacts.add("default", file('hxaudio-v331.aar'))

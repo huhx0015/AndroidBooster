@@ -1,6 +1,6 @@
 package com.huhx0015.androidbooster.utils;
 
-import android.databinding.BindingAdapter;
+import androidx.databinding.BindingAdapter;
 import android.widget.ImageView;
 import com.huhx0015.androidbooster.R;
 import com.squareup.picasso.Picasso;

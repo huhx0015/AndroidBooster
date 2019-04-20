@@ -1,8 +1,8 @@
 package com.huhx0015.androidbooster.view.activities;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import com.huhx0015.androidbooster.application.AndroidApplication;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
