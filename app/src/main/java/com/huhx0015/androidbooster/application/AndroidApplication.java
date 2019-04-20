@@ -26,21 +26,13 @@ public class AndroidApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        initLeakCanary();
         initDagger();
+        initLeakCanary();
     }
 
     /** INIT METHODS ___________________________________________________________________________ **/
 
-    private void initLeakCanary() {
-
-        // LEAK CANARY:
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        LeakCanary.install(this);
-    }
-
+    // DAGGER:
     private void initDagger() {
 
         // DAGGER NETWORK COMPONENT:
@@ -50,19 +42,18 @@ public class AndroidApplication extends Application {
                 .build();
     }
 
+    // LEAK CANARY:
+    protected RefWatcher initLeakCanary() {
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return RefWatcher.DISABLED;
+        }
+        return LeakCanary.install(this);
+    }
+
     /** GET METHODS ____________________________________________________________________________ **/
 
     public NetworkComponent getNetworkComponent() {
         return mNetworkComponent;
     }
 
-    public RefWatcher getRefWatcher() {
-        return mRefWatcher;
-    }
-
-    /** SET METHODS ____________________________________________________________________________ **/
-
-    public void setNetworkComponent(NetworkComponent mNetworkComponent) {
-        this.mNetworkComponent = mNetworkComponent;
-    }
 }

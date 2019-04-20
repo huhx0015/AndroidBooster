@@ -5,13 +5,6 @@
     <!-- PERMISSIONS -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!--DANGEROUS PERMISSIONS-->
-    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
-
-    <!--FEATURES-->
-    <!--<uses-feature android:name="android.hardware.location.gps" /> -->
-
     <application
         android:name=".application.AndroidApplication"
         android:allowBackup="true"
