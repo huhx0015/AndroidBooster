@@ -1,7 +1,4 @@
-package com.huhx0015.androidbooster.contracts;
-
-import com.huhx0015.androidbooster.presenter.interfaces.BasePresenter;
-import com.huhx0015.androidbooster.view.interfaces.BaseView;
+package com.huhx0015.androidbooster.architecture;
 
 /**
  * Created by Michael Yoon Huh on 6/22/2017.
@@ -9,6 +6,7 @@ import com.huhx0015.androidbooster.view.interfaces.BaseView;
  * Reference: https://www.codeproject.com/Articles/1098822/Learn-Android-MVP-Pattern-By-Example
  */
 
+@Deprecated
 public interface BaseMvpContract {
 
     /** VIEW INTERFACE _________________________________________________________________________ **/

@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.contracts;
+package com.huhx0015.androidbooster.architecture;
 
 /**
  * Created by Michael Yoon Huh on 6/22/2017.
@@ -6,6 +6,7 @@ package com.huhx0015.androidbooster.contracts;
  * Reference: https://cheesecakelabs.com/blog/using-viper-architecture-android/
  */
 
+@Deprecated
 public interface BaseViperContract {
 
     /** VIEW INTERFACE _________________________________________________________________________ **/

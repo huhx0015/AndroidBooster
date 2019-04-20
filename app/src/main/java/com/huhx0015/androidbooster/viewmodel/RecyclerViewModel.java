@@ -1,6 +1,7 @@
 package com.huhx0015.androidbooster.viewmodel;
 
 import androidx.annotation.NonNull;
+import com.huhx0015.androidbooster.architecture.BaseViewModel;
 
 /**
  * Created by Michael Yoon Huh on 6/22/2017.

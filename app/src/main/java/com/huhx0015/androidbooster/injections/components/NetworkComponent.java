@@ -2,8 +2,8 @@ package com.huhx0015.androidbooster.injections.components;
 
 import com.huhx0015.androidbooster.injections.modules.ApplicationModule;
 import com.huhx0015.androidbooster.injections.modules.NetworkModule;
-import com.huhx0015.androidbooster.view.activities.ApiActivity;
-import com.huhx0015.androidbooster.view.fragments.ApiFragment;
+import com.huhx0015.androidbooster.ui.activities.ApiActivity;
+import com.huhx0015.androidbooster.ui.fragments.ApiFragment;
 import javax.inject.Singleton;
 import dagger.Component;
 

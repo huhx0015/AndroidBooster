@@ -1,9 +1,8 @@
-package com.huhx0015.androidbooster.view.fragments;
+package com.huhx0015.androidbooster.ui.activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+import androidx.appcompat.app.AppCompatActivity;
 import com.huhx0015.androidbooster.application.AndroidApplication;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
@@ -12,12 +11,9 @@ import retrofit2.Retrofit;
  * Created by Michael Yoon Huh on 6/22/2017.
  */
 
-public class ApiFragment extends Fragment {
+public class ApiActivity extends AppCompatActivity {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
-
-    // FRAGMENT VARIABLES
-    protected Context mContext;
 
     // DEPENDENCY INJECTION VARIABLES
     @Inject Retrofit mNetworkAdapter;
@@ -27,7 +23,6 @@ public class ApiFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = getContext();
-        ((AndroidApplication) getActivity().getApplication()).getNetworkComponent().inject(this);
+        ((AndroidApplication) getApplication()).getNetworkComponent().inject(this);
     }
 }

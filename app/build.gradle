@@ -94,7 +94,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
 //    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version" // KOTLIN-ONLY
-    implementation "androidx.navigation:navigation-fragment:$nav_version" 
+    implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 //    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version" // KOTLIN-ONLY
 //    implementation "androidx.navigation:navigation-ui-ktx:$nav_version" // KOTLIN-ONLY
