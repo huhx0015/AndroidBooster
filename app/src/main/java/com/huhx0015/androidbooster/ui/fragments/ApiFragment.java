@@ -1,10 +1,12 @@
 package com.huhx0015.androidbooster.ui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import com.huhx0015.androidbooster.application.AndroidApplication;
+import com.huhx0015.androidbooster.architecture.base.BaseFragment;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 
@@ -12,22 +14,20 @@ import retrofit2.Retrofit;
  * Created by Michael Yoon Huh on 6/22/2017.
  */
 
-public class ApiFragment extends Fragment {
+public class ApiFragment extends BaseFragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    // FRAGMENT VARIABLES
-    protected Context mContext;
-
     // DEPENDENCY INJECTION VARIABLES
-    @Inject Retrofit mNetworkAdapter;
+    @Inject
+    Retrofit mNetworkAdapter;
 
     /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
 
+    @Nullable
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mContext = getContext();
-        ((AndroidApplication) getActivity().getApplication()).getNetworkComponent().inject(this);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 }

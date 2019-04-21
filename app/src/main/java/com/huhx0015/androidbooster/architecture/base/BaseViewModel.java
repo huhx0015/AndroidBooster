@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.architecture;
+package com.huhx0015.androidbooster.architecture.base;
 
 import android.app.Application;
 import android.content.Context;
