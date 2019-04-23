@@ -1,6 +1,7 @@
 package com.huhx0015.androidbooster.utils;
 
 import android.content.Context;
+import androidx.annotation.NonNull;
 
 /**
  * Created by Michael Yoon Huh on 6/22/2017.
@@ -18,7 +19,7 @@ public class DisplayUtils {
      * @param context
      * @return
      */
-    public static int getOrientation(Context context) {
+    public static int getOrientation(@NonNull Context context) {
         return context.getResources().getConfiguration().orientation;
     }
 }

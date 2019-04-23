@@ -39,21 +39,21 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Cache provideOkHttpCache(Application application) {
+    Cache providesCache(@NonNull Application application) {
         return new Cache(application.getCacheDir(), HTTP_CLIENT_CACHE);
     }
 
     @Provides
     @Singleton
-    Gson provideGson() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES);
-        return gsonBuilder.create();
+    Gson providesGson() {
+        return new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
+                .create();
     }
 
     @Provides
     @Singleton
-    OkHttpClient provideOkHttpClient(Cache cache) {
+    OkHttpClient providesOkHttpClient(@NonNull Cache cache) {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return new OkHttpClient.Builder()
@@ -64,7 +64,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient client) {
+    Retrofit providesRetrofit(@NonNull Gson gson, @NonNull OkHttpClient client) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(mBaseUrl)

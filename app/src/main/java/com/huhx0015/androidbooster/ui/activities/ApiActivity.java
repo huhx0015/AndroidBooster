@@ -2,7 +2,6 @@ package com.huhx0015.androidbooster.ui.activities;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
-import com.huhx0015.androidbooster.application.AndroidApplication;
 import com.huhx0015.androidbooster.architecture.base.BaseActivity;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
@@ -24,6 +23,5 @@ public class ApiActivity extends BaseActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((AndroidApplication) getApplication()).getNetworkComponent().inject(this);
     }
 }

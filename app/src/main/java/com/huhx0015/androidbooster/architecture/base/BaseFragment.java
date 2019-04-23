@@ -11,7 +11,7 @@ public class BaseFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        ((AndroidApplication) getActivity().getApplication()).getNetworkComponent().inject(this);
         super.onCreate(savedInstanceState);
+        ((AndroidApplication) getActivity().getApplication()).getApplicationComponent().inject(this);
     }
 }
