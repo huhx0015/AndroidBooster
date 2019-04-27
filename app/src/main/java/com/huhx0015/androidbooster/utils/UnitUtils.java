@@ -6,8 +6,6 @@ import android.util.DisplayMetrics;
 import androidx.annotation.NonNull;
 
 /**
- * Created by Michael Yoon Huh on 6/22/2017.
- *
  * Source: http://stackoverflow.com/questions/4605527/converting-pixels-to-dp
  */
 

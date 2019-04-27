@@ -3,10 +3,6 @@ package com.huhx0015.androidbooster.utils;
 import android.content.Context;
 import androidx.annotation.NonNull;
 
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
-
 public class DisplayUtils {
 
     /** UTILITY METHODS ________________________________________________________________________ **/

@@ -8,20 +8,18 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.Observable;
 import androidx.databinding.PropertyChangeRegistry;
+import androidx.databinding.library.baseAdapters.BR;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import com.huhx0015.androidbooster.application.AndroidApplication;
 import com.huhx0015.androidbooster.injections.components.ActivityComponent;
+import com.huhx0015.androidbooster.injections.components.DaggerActivityComponent;
 import com.huhx0015.androidbooster.injections.modules.ActivityModule;
 import com.huhx0015.androidbooster.injections.modules.ViewModelModule;
 import javax.inject.Inject;
 import io.reactivex.disposables.CompositeDisposable;
-
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
 
 public class BaseViewModel extends AndroidViewModel implements LifecycleOwner, Observable {
 
@@ -38,7 +36,7 @@ public class BaseViewModel extends AndroidViewModel implements LifecycleOwner, O
 
     public BaseViewModel(@NonNull Application application) {
         super(application);
-        getComponent(application).inject(this);
+        getComponent(application).inject(this); // DEPENDENCY INJECTION
     }
 
     /** LIFECYCLE METHODS ______________________________________________________________________ **/
@@ -80,11 +78,16 @@ public class BaseViewModel extends AndroidViewModel implements LifecycleOwner, O
         mRegistry.remove(callback);
     }
 
+    protected void notifyChange() {
+        mRegistry.notifyChange(this, BR.viewModel);
+    }
+
     /** DEPENDENCY INJECTION METHODS ___________________________________________________________ **/
+
     @NonNull
-    protected ActivityComponent getComponent(@NonNull Context context) {
+    private ActivityComponent getComponent(@NonNull Context context) {
         return DaggerActivityComponent.builder()
-                .applicationComponent((AndroidApplication) getActivity().getApplication().getApplicationComponent())
+                .applicationComponent(AndroidApplication.get(context).getApplicationComponent())
                 .activityModule(new ActivityModule((AppCompatActivity) context))
                 .viewModelModule(new ViewModelModule())
                 .build();

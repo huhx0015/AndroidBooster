@@ -11,8 +11,12 @@ import dagger.Provides;
 @Module
 public class RecyclerViewModule {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
     private static final int GRID_LAYOUT_SPAN_COUNT = 8;
     private static final int LIST_PREFETCH_SIZE = 6;
+
+    /** MODULE METHODS _________________________________________________________________________ **/
 
     @Provides
     @ActivityScope

@@ -6,7 +6,6 @@ import com.huhx0015.androidbooster.injections.modules.FragmentModule;
 import com.huhx0015.androidbooster.injections.modules.RecyclerViewModule;
 import com.huhx0015.androidbooster.injections.modules.ViewModelModule;
 import com.huhx0015.androidbooster.injections.scopes.ActivityScope;
-
 import dagger.Component;
 
 @ActivityScope

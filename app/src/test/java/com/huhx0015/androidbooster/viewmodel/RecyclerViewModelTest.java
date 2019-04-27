@@ -1,5 +1,6 @@
 package com.huhx0015.androidbooster.viewmodel;
 
+import com.huhx0015.androidbooster.application.AndroidApplication;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -7,10 +8,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
-
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
+import static org.mockito.Mockito.mock;
 
 @RunWith(MockitoJUnitRunner.class)
 public class RecyclerViewModelTest {
@@ -18,7 +16,10 @@ public class RecyclerViewModelTest {
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
     // MOCK VARIABLES
-    @Mock private RecyclerViewModel mViewModel;
+    @Mock
+    private ApiRecyclerViewModel mViewModel;
+    @Mock
+    private AndroidApplication mApplication;
 
     // TEST VARIABLES
     private static final String TEST_ERROR_TEXT = "An error occurred.";
@@ -29,7 +30,9 @@ public class RecyclerViewModelTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mViewModel = new RecyclerViewModel();
+        mApplication = mock(AndroidApplication.class);
+
+        mViewModel = new ApiRecyclerViewModel(mApplication);
         mViewModel.setErrorText(TEST_ERROR_TEXT);
     }
 
@@ -37,17 +40,17 @@ public class RecyclerViewModelTest {
 
     @Test
     public void testGetErrorVisibility() throws Exception {
-        Assert.assertEquals(false, mViewModel.getErrorVisible());
+        Assert.assertFalse(mViewModel.getErrorVisible());
     }
 
     @Test
     public void testGetProgressBarVisibility() throws Exception {
-        Assert.assertEquals(false, mViewModel.getProgressBarVisible());
+        Assert.assertFalse(mViewModel.getProgressBarVisible());
     }
 
     @Test
     public void testGetRecyclerViewVisibility() throws Exception {
-        Assert.assertEquals(false, mViewModel.getRecyclerViewVisible());
+        Assert.assertFalse(mViewModel.getRecyclerViewVisible());
     }
 
     @Test
@@ -58,19 +61,19 @@ public class RecyclerViewModelTest {
     @Test
     public void testSetErrorVisibility() throws Exception {
         mViewModel.setErrorVisible(true);
-        Assert.assertEquals(true, mViewModel.getErrorVisible());
+        Assert.assertTrue(mViewModel.getErrorVisible());
     }
 
     @Test
     public void testSetProgressBarVisibility() throws Exception {
         mViewModel.setProgressBarVisible(true);
-        Assert.assertEquals(true, mViewModel.getProgressBarVisible());
+        Assert.assertTrue(mViewModel.getProgressBarVisible());
     }
 
     @Test
     public void testSetRecyclerViewVisibility() throws Exception {
         mViewModel.setRecyclerViewVisible(true);
-        Assert.assertEquals(true, mViewModel.getRecyclerViewVisible());
+        Assert.assertTrue(mViewModel.getRecyclerViewVisible());
     }
 
     @Test

@@ -1,5 +1,7 @@
 package com.huhx0015.androidbooster.rx;
 
+import androidx.annotation.NonNull;
+
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.Relay;
 import javax.inject.Singleton;
@@ -13,17 +15,21 @@ import io.reactivex.Flowable;
 @Singleton
 public class RxBus {
 
-    private final Relay<Object> mBus = PublishRelay.create().toSerialized();
+    /** RXBUS METHODS __________________________________________________________________________ **/
 
-    public void send(Object o) {
-        mBus.accept(o);
-    }
+    private final Relay<Object> mBus = PublishRelay.create().toSerialized();
 
     public Flowable<Object> asFlowable() {
         return mBus.toFlowable(BackpressureStrategy.LATEST);
     }
 
+    /** ACTION METHODS _________________________________________________________________________ **/
+
     public boolean hasObservers() {
         return mBus.hasObservers();
+    }
+
+    public void send(@NonNull Object object) {
+        mBus.accept(object);
     }
 }

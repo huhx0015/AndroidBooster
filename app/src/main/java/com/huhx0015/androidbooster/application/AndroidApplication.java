@@ -1,32 +1,25 @@
 package com.huhx0015.androidbooster.application;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
-
 import androidx.annotation.NonNull;
-
 import com.huhx0015.androidbooster.BuildConfig;
 import com.huhx0015.androidbooster.constants.AndroidConstants;
 import com.huhx0015.androidbooster.injections.components.ApplicationComponent;
+import com.huhx0015.androidbooster.injections.components.DaggerApplicationComponent;
 import com.huhx0015.androidbooster.injections.modules.ApplicationModule;
 import com.huhx0015.androidbooster.injections.modules.NetworkModule;
-import com.huhx0015.androidbooster.injections.components.DaggerNetworkComponent;
 import com.huhx0015.androidbooster.logging.ReleaseTree;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 import timber.log.Timber;
 
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
-
 public class AndroidApplication extends Application {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
-    private ApplicationComponent mApplicationComponent;
-    private NetworkComponent mNetworkComponent;
-    private RefWatcher mRefWatcher;
+    private ApplicationComponent mComponent;
 
     /** APPLICATION LIFECYCLE METHODS __________________________________________________________ **/
 
@@ -43,12 +36,11 @@ public class AndroidApplication extends Application {
 
     // DAGGER:
     private void initDagger() {
-
-        // DAGGER NETWORK COMPONENT:
-        mNetworkComponent = DaggerNetworkComponent.builder()
+        mComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
                 .networkModule(new NetworkModule(AndroidConstants.API_URL))
                 .build();
+        mComponent.inject(this);
     }
 
     // LEAK CANARY:
@@ -70,15 +62,23 @@ public class AndroidApplication extends Application {
 
     /** GET METHODS ____________________________________________________________________________ **/
 
+    @NonNull
+    public static AndroidApplication get(@NonNull Application application) {
+        return (AndroidApplication) application;
+    }
+
+    @NonNull
+    public static AndroidApplication get(@NonNull Activity activity) {
+        return (AndroidApplication) activity.getApplicationContext();
+    }
+
+    @NonNull
     public static AndroidApplication get(@NonNull Context context) {
         return (AndroidApplication) context.getApplicationContext();
     }
 
+    @NonNull
     public ApplicationComponent getApplicationComponent() {
-        return mApplicationComponent;
-    }
-
-    public NetworkComponent getNetworkComponent() {
-        return mNetworkComponent;
+        return mComponent;
     }
 }

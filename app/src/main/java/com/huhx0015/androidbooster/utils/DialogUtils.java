@@ -5,13 +5,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import androidx.appcompat.app.AlertDialog;
-import android.util.Log;
 import android.view.WindowManager;
 import com.huhx0015.androidbooster.R;
-
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
+import timber.log.Timber;
 
 public class DialogUtils {
 
@@ -39,7 +35,7 @@ public class DialogUtils {
         try {
             dialog.show();
         } catch (WindowManager.BadTokenException e) {
-            Log.e(LOG_TAG, "ERROR: " + e.getLocalizedMessage());
+            Timber.e("ERROR: %s", e.getLocalizedMessage());
         }
         dialog.setCancelable(false);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));

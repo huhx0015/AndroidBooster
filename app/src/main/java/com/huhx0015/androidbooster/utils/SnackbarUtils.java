@@ -3,10 +3,6 @@ package com.huhx0015.androidbooster.utils;
 import com.google.android.material.snackbar.Snackbar;
 import android.view.View;
 
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
-
 public class SnackbarUtils {
 
     /** UTILITY METHODS ________________________________________________________________________ **/

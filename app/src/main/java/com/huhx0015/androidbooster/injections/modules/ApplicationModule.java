@@ -5,19 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.net.ConnectivityManager;
-
 import androidx.annotation.NonNull;
-
 import com.huhx0015.androidbooster.constants.AndroidConstants;
 import com.huhx0015.androidbooster.rx.RxBus;
-
 import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
-
-/**
- * Created by Michael Yoon Huh on 6/23/2017.
- */
 
 @Module
 public class ApplicationModule {
@@ -28,7 +21,7 @@ public class ApplicationModule {
 
     /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
-    public ApplicationModule(Application application) {
+    public ApplicationModule(@NonNull Application application) {
         mApplication = application;
     }
 

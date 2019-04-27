@@ -1,13 +1,10 @@
 package com.huhx0015.androidbooster.viewmodel;
 
+import android.app.Application;
 import androidx.annotation.NonNull;
 import com.huhx0015.androidbooster.architecture.base.BaseViewModel;
 
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
-
-public class RecyclerViewModel extends BaseViewModel {
+public class ApiRecyclerViewModel extends BaseViewModel {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -18,6 +15,12 @@ public class RecyclerViewModel extends BaseViewModel {
     private boolean mErrorVisibility = false;
     private boolean mProgressBarVisibility = false;
     private boolean mRecyclerViewVisibility = false;
+
+    /** CONSTRUCTOR ____________________________________________________________________________ **/
+
+    public ApiRecyclerViewModel(@NonNull Application application) {
+        super(application);
+    }
 
     /** GET METHODS ____________________________________________________________________________ **/
 

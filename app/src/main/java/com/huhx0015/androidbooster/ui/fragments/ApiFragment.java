@@ -6,19 +6,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import com.huhx0015.androidbooster.R;
 import com.huhx0015.androidbooster.architecture.base.BaseFragment;
+import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
-
-/**
- * Created by Michael Yoon Huh on 6/22/2017.
- */
 
 public class ApiFragment extends BaseFragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
+    // VIEW VARIABLES
+    private View mFragmentView;
+
     // DEPENDENCY INJECTION VARIABLES
+    @Inject
+    ApiRecyclerViewModel mViewModel;
     @Inject
     Retrofit mNetworkAdapter;
 
@@ -28,6 +31,7 @@ public class ApiFragment extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        mFragmentView = inflater.inflate(R.layout.view_api_recyclerview, container, false);
+        return mFragmentView;
     }
 }

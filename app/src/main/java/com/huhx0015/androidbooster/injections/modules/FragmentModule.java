@@ -9,14 +9,21 @@ import dagger.Provides;
 @Module
 public class FragmentModule {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
     @NonNull
     private Fragment mFragment;
+
+    /** CONSTRUCTOR METHODS ____________________________________________________________________ **/
 
     public FragmentModule(@NonNull Fragment fragment) {
         this.mFragment = fragment;
     }
 
+    /** MODULE METHODS _________________________________________________________________________ **/
+
     @Provides
+    @NonNull
     @ActivityScope
     Fragment providesFragment() {
         return mFragment;

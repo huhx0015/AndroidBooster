@@ -11,9 +11,13 @@ import dagger.Provides;
 @Module
 public class LocationModule {
 
+    /** CLASS VARIABLES ________________________________________________________________________ **/
+
     // CONSTANT VARIABLES:
     private static final int UPDATE_INTERVAL = 10000;
     private static final int FASTEST_INTERVAL = 5000;
+
+    /** MODULE METHODS _________________________________________________________________________ **/
 
     @Provides
     @ServiceScope
