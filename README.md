@@ -5,7 +5,7 @@ DEVELOPER: huhx0015
 
 ## Description
 
-Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/VIPER architecture framework and contains several popular Android libraries, including Databinding, Dagger 2, Retrofit 2, RxJava 2, ButterKnife, Glide, Picasso, Leak Canary, Timber, and other useful libraries.
+Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/VIPER architecture framework and contains several popular Android libraries, including Dagger 2, Retrofit 2, RxJava 2, RxAndroid, RxRelay, Glide, Leak Canary, Timber, and other useful libraries.
 
 In addition, this project also includes a few handy utility classes, as well as some basic test classes for testing ViewModel classes.
 
@@ -19,20 +19,11 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 #### Dependency Injection
 
-* ButterKnife: http://jakewharton.github.io/butterknife/
 * Dagger 2: https://github.com/google/dagger
-
-#### Event
-
-* RxJava 2: https://github.com/ReactiveX/RxJava
-* RxAndroid: https://github.com/ReactiveX/RxAndroid
-* RxBinding: https://github.com/JakeWharton/RxBinding
 
 #### Images
 
 * Glide: https://github.com/bumptech/glide
-* Picasso: http://square.github.io/picasso/
-* RoundedImageView: https://github.com/vinc3m1/RoundedImageView
 * Subsampling Scale Image View: https://github.com/davemorrissey/subsampling-scale-image-view
 
 #### Logging
@@ -52,12 +43,17 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 * Permissions Dispatcher: https://github.com/hotchemi/PermissionsDispatcher
 
+#### RX
+
+* RxJava 2: https://github.com/ReactiveX/RxJava
+* RxAndroid: https://github.com/ReactiveX/RxAndroid
+* RxBinding: https://github.com/JakeWharton/RxBinding
+* RxRelay: https://github.com/JakeWharton/RxRelay
+
 #### Testing
 
-* DaggerMock: https://github.com/fabioCollini/DaggerMock
 * JUnit 4: https://github.com/junit-team/junit4
 * Mockito: https://github.com/mockito/mockito
-* RESTMock: https://github.com/andrzejchm/RESTMock
 * Roboelectric: https://github.com/robolectric/robolectric
 
 ## License
