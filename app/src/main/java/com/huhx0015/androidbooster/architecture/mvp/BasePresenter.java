@@ -1,6 +1,6 @@
 package com.huhx0015.androidbooster.architecture.mvp;
 
-public interface BasePresenter {
+interface BasePresenter {
 
     /** PRESENTER INTERFACE ____________________________________________________________________ **/
 

@@ -9,8 +9,8 @@
             type="com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel" />
     </data>
 
-    <RelativeLayout
-        android:orientation="vertical"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true">
@@ -19,29 +19,40 @@
             android:id="@+id/rv_api_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="16dp"
             android:layout_gravity="center"
-            android:visibility="@{viewModel.recyclerViewVisible ? View.VISIBLE : View.INVISIBLE}"/>
+            android:layout_margin="@dimen/api_recyclerview_margin"
+            android:padding="@dimen/api_recyclerview_padding"
+            android:visibility="@{viewModel.recyclerViewVisible ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@{viewModel.errorText}"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            android:visibility="@{viewModel.errorVisible ? View.VISIBLE : View.GONE}"/>
+            android:visibility="@{viewModel.errorVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_api_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_api_list" />
 
         <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/pb_loading"
             style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="@{viewModel.progressBarVisible ? View.VISIBLE : View.GONE}"/>
+            android:visibility="@{viewModel.progressBarVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_api_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_api_list" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

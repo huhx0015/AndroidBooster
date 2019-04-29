@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.mock;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -39,45 +39,45 @@ public class RecyclerViewModelTest {
     /** TEST METHODS ___________________________________________________________________________ **/
 
     @Test
-    public void testGetErrorVisibility() throws Exception {
+    public void testGetErrorVisibility() {
         Assert.assertFalse(mViewModel.getErrorVisible());
     }
 
     @Test
-    public void testGetProgressBarVisibility() throws Exception {
+    public void testGetProgressBarVisibility() {
         Assert.assertFalse(mViewModel.getProgressBarVisible());
     }
 
     @Test
-    public void testGetRecyclerViewVisibility() throws Exception {
+    public void testGetRecyclerViewVisibility() {
         Assert.assertFalse(mViewModel.getRecyclerViewVisible());
     }
 
     @Test
-    public void testGetErrorText() throws Exception {
+    public void testGetErrorText() {
         Assert.assertEquals(TEST_ERROR_TEXT, mViewModel.getErrorText());
     }
 
     @Test
-    public void testSetErrorVisibility() throws Exception {
+    public void testSetErrorVisibility() {
         mViewModel.setErrorVisible(true);
         Assert.assertTrue(mViewModel.getErrorVisible());
     }
 
     @Test
-    public void testSetProgressBarVisibility() throws Exception {
+    public void testSetProgressBarVisibility() {
         mViewModel.setProgressBarVisible(true);
         Assert.assertTrue(mViewModel.getProgressBarVisible());
     }
 
     @Test
-    public void testSetRecyclerViewVisibility() throws Exception {
+    public void testSetRecyclerViewVisibility() {
         mViewModel.setRecyclerViewVisible(true);
         Assert.assertTrue(mViewModel.getRecyclerViewVisible());
     }
 
     @Test
-    public void testSetErrorText() throws Exception {
+    public void testSetErrorText() {
         mViewModel.setErrorText(TEST_ERROR_TEXT_ALTERNATE);
         Assert.assertEquals(TEST_ERROR_TEXT_ALTERNATE, mViewModel.getErrorText());
     }

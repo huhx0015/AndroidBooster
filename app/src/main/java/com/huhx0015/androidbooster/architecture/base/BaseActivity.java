@@ -35,7 +35,7 @@ public class BaseActivity extends AppCompatActivity {
     @NonNull
     private ActivityComponent getComponent() {
         return DaggerActivityComponent.builder()
-                .applicationComponent(AndroidApplication.get(this).getApplicationComponent())
+                .applicationComponent(AndroidApplication.get(this).getComponent())
                 .activityModule(new ActivityModule(this))
                 .recyclerViewModule(new RecyclerViewModule())
                 .viewModelModule(new ViewModelModule())

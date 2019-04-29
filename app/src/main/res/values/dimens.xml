@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--DIMENSION VALUES-->
+
+    <!--API RECYCLER VIEW-->
+    <dimen name="api_recyclerview_margin">8dp</dimen>
+    <dimen name="api_recyclerview_padding">8dp</dimen>
+</resources>

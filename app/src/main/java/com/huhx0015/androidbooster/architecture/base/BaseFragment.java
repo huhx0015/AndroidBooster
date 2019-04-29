@@ -27,7 +27,7 @@ public class BaseFragment extends Fragment {
     private FragmentComponent getComponent() {
         return DaggerFragmentComponent.builder()
                 .applicationComponent(AndroidApplication.get(getContext())
-                        .getApplicationComponent())
+                        .getComponent())
                 .fragmentModule(new FragmentModule(this))
                 .recyclerViewModule(new RecyclerViewModule())
                 .viewModelModule(new ViewModelModule())

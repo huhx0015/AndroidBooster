@@ -12,7 +12,7 @@ import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 
-public class ApiFragment extends BaseFragment {
+public class ApiRecyclerViewFragment extends BaseFragment {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 

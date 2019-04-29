@@ -78,8 +78,12 @@ public class BaseViewModel extends AndroidViewModel implements LifecycleOwner, O
         mRegistry.remove(callback);
     }
 
-    protected void notifyChange() {
-        mRegistry.notifyChange(this, BR.viewModel);
+    protected void notifyChange(int propertyId) {
+        mRegistry.notifyChange(this, propertyId);
+    }
+
+    protected void notifyChangeAll() {
+        mRegistry.notifyChange(this, BR._all);
     }
 
     /** DEPENDENCY INJECTION METHODS ___________________________________________________________ **/
@@ -87,7 +91,7 @@ public class BaseViewModel extends AndroidViewModel implements LifecycleOwner, O
     @NonNull
     private ActivityComponent getComponent(@NonNull Context context) {
         return DaggerActivityComponent.builder()
-                .applicationComponent(AndroidApplication.get(context).getApplicationComponent())
+                .applicationComponent(AndroidApplication.get(context).getComponent())
                 .activityModule(new ActivityModule((AppCompatActivity) context))
                 .viewModelModule(new ViewModelModule())
                 .build();

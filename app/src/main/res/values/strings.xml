@@ -3,4 +3,7 @@
     <!--APPLICATION STRINGS-->
     <string name="app_name">Android Booster</string>
 
+    <!--DIALOG-->
+    <string name="ok">OK</string>
+
 </resources>

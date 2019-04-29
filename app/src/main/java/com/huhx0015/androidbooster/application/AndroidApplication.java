@@ -78,7 +78,7 @@ public class AndroidApplication extends Application {
     }
 
     @NonNull
-    public ApplicationComponent getApplicationComponent() {
+    public ApplicationComponent getComponent() {
         return mComponent;
     }
 }

@@ -8,7 +8,7 @@ import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel;
 import javax.inject.Inject;
 import retrofit2.Retrofit;
 
-public class ApiActivity extends BaseActivity {
+public class ApiRecyclerViewActivity extends BaseActivity {
 
     /** CLASS VARIABLES ________________________________________________________________________ **/
 
@@ -18,7 +18,7 @@ public class ApiActivity extends BaseActivity {
     @Inject
     Retrofit mNetworkAdapter;
 
-    /** FRAGMENT LIFECYCLE METHODS _____________________________________________________________ **/
+    /** ACTIVITY LIFECYCLE METHODS _____________________________________________________________ **/
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

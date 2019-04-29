@@ -1,7 +1,6 @@
 package com.huhx0015.androidbooster.rx;
 
 import androidx.annotation.NonNull;
-
 import com.jakewharton.rxrelay2.PublishRelay;
 import com.jakewharton.rxrelay2.Relay;
 import javax.inject.Singleton;

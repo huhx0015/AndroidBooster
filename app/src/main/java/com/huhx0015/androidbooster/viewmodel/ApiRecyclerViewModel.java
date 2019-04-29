@@ -45,21 +45,21 @@ public class ApiRecyclerViewModel extends BaseViewModel {
 
     public void setProgressBarVisible(boolean visible) {
         this.mProgressBarVisibility = visible;
-        notifyChange();
+        notifyChangeAll();
     }
 
     public void setRecyclerViewVisible(boolean visible) {
         this.mRecyclerViewVisibility = visible;
-        notifyChange();
+        notifyChangeAll();
     }
 
     public void setErrorVisible(boolean visible) {
         this.mErrorVisibility = visible;
-        notifyChange();
+        notifyChangeAll();
     }
 
     public void setErrorText(@NonNull String text) {
         this.mErrorText = text;
-        notifyChange();
+        notifyChangeAll();
     }
 }
