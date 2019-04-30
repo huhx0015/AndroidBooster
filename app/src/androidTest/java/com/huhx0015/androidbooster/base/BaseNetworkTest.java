@@ -33,7 +33,7 @@ public class BaseNetworkTest {
 
     // RULE VARIABLES
     @Rule
-    public ActivityTestRule<BaseActivity> activityRule = new ActivityTestRule(BaseActivity.class);
+    public ActivityTestRule<BaseActivity> mActivityRule = new ActivityTestRule<>(BaseActivity.class);
     @Rule
     public MockWebServer mServer = new MockWebServer();
 
