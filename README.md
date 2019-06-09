@@ -7,6 +7,8 @@ DEVELOPER: huhx0015
 
 Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/MVI/VIPER architecture framework and contains several popular Android libraries, including Dagger 2, Retrofit 2, RxJava 2, RxAndroid, RxRelay, Glide, Leak Canary, Timber, and other useful libraries.
 
+Android Booster is available in Kotlin and Java. Kotlin is supported on the `master` branch and Java on the `java` branch.
+
 In addition, this project also includes a few handy utility classes, as well as some basic test classes for testing ViewModel classes.
 
 ## Resources
@@ -54,11 +56,12 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 * JUnit 4: https://github.com/junit-team/junit4
 * Mockito: https://github.com/mockito/mockito
+* Mockito-Kotlin: https://github.com/nhaarman/mockito-kotlin
 * Roboelectric: https://github.com/robolectric/robolectric
 
 ## License
 
-    Copyright 2017 Michael Huh
+    Copyright 2019 Michael Huh
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
