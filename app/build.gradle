@@ -1,4 +1,7 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 28
@@ -26,6 +29,9 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
     }
 }
 
@@ -85,7 +91,8 @@ ext {
     // UNIT TESTING
     junit_version = "4.12"
     rules_version = "1.1.0"
-    mockito_version = "2.27.0"
+    mockito_version = "2.28.2"
+    mockito_kotlin_version = "2.1.0"
     roboelectric_version = "4.2"
 }
 
@@ -103,25 +110,25 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
+    implementation "com.google.android.material:material:$material_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
     implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_ktx_version"
     implementation "androidx.room:room-guava:$room_version"
     implementation "androidx.room:room-rxjava2:$room_version"
     implementation "androidx.work:work-runtime-ktx:$work_version"
     implementation "androidx.work:work-rxjava2:$work_version"
-    implementation "com.google.android.material:material:$material_version"
 
     // AUDIO
     implementation project(':hxaudio')
 
     // DEPENDENCY INJECTION
     implementation "com.google.dagger:dagger:$dagger_version"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
     implementation "com.google.code.findbugs:jsr305:$findbugs_version"
 
     // GOOGLE
@@ -134,7 +141,7 @@ dependencies {
     // IMAGE
     implementation "com.davemorrissey.labs:subsampling-scale-image-view:$subsampling_scale_image_view_version"
     implementation "com.github.bumptech.glide:glide:$glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // LOGGING
     implementation "com.jakewharton.timber:timber:$timber_version"
@@ -153,7 +160,7 @@ dependencies {
 
     // PERMISSIONS
     implementation "org.permissionsdispatcher:permissionsdispatcher:$permissions_dispatcher_version"
-    annotationProcessor "org.permissionsdispatcher:permissionsdispatcher-processor:$permissions_dispatcher_version"
+    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$permissions_dispatcher_version"
 
     // RXJAVA
     implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
@@ -196,6 +203,10 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$rules_version"
     androidTestImplementation "org.mockito:mockito-core:$mockito_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
+    androidTestImplementation "org.mockito:mockito-inline:$mockito_version"
+    testImplementation "org.mockito:mockito-inline:$mockito_version"
+    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "org.robolectric:robolectric:$roboelectric_version"
     testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 }
