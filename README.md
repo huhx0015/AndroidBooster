@@ -5,9 +5,7 @@ DEVELOPER: huhx0015
 
 ## Description
 
-Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/MVI/VIPER architecture framework and contains several popular Android libraries, including Dagger 2, Retrofit 2, RxJava 2, RxAndroid, RxRelay, Glide, Leak Canary, Timber, and other useful libraries.
-
-Android Booster is available in Kotlin and Java. Kotlin is supported on the `master` branch and Java on the `java` branch.
+Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/MVI/VIPER architecture framework and contains several popular Android libraries, including Hilt, Retrofit 2, RxJava 3, RxAndroid, RxRelay, Coil, Leak Canary, Timber, and other useful libraries.
 
 In addition, this project also includes a few handy utility classes, as well as some basic test classes for testing ViewModel classes.
 
@@ -15,17 +13,21 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 ### Libraries
 
+#### Android
+
+* Android Jetpack: https://developer.android.com/jetpack
+
 #### Audio
 
 * HX Audio Player: https://github.com/huhx0015/HXAudioPlayer
 
 #### Dependency Injection
 
-* Dagger 2: https://github.com/google/dagger
-
+* Hilt: https://dagger.dev/hilt/
+  
 #### Images
 
-* Glide: https://github.com/bumptech/glide
+* Coil: https://coil-kt.github.io/coil/
 * Subsampling Scale Image View: https://github.com/davemorrissey/subsampling-scale-image-view
 
 #### Logging
@@ -34,7 +36,8 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 #### Network
 
-* OkHttp 3: https://github.com/square/okhttp
+* Moshi: https://github.com/square/moshi
+* OkHttp: https://github.com/square/okhttp
 * Retrofit 2: http://square.github.io/retrofit/
 
 #### Performance
@@ -47,14 +50,14 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 #### RX
 
-* RxJava 2: https://github.com/ReactiveX/RxJava
+* RxJava: https://github.com/ReactiveX/RxJava
 * RxAndroid: https://github.com/ReactiveX/RxAndroid
 * RxBinding: https://github.com/JakeWharton/RxBinding
 * RxRelay: https://github.com/JakeWharton/RxRelay
 
 #### Testing
 
-* JUnit 4: https://github.com/junit-team/junit4
+* JUnit: https://github.com/junit-team/junit4
 * Mockito: https://github.com/mockito/mockito
 * Mockito-Kotlin: https://github.com/nhaarman/mockito-kotlin
 * Roboelectric: https://github.com/robolectric/robolectric
