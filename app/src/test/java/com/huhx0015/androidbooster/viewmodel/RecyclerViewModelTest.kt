@@ -1,6 +1,8 @@
 package com.huhx0015.androidbooster.viewmodel
 
 import android.app.Application
+import androidx.databinding.PropertyChangeRegistry
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -36,6 +38,9 @@ class RecyclerViewModelTest {
         application = mock(Application::class.java)
 
         viewModel = ApiRecyclerViewModel(application)
+        // Manually initialize Hilt-injected dependencies for testing
+        viewModel.disposable = CompositeDisposable()
+        viewModel.registry = PropertyChangeRegistry()
         viewModel.errorText = TEST_ERROR_TEXT
     }
 

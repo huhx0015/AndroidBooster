@@ -1,9 +1,9 @@
 package com.huhx0015.androidbooster.rx
 
-import com.jakewharton.rxrelay2.PublishRelay
+import com.jakewharton.rxrelay3.PublishRelay
 import javax.inject.Singleton
-import io.reactivex.BackpressureStrategy
-import io.reactivex.Flowable
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.core.Flowable
 
 /**
  * Reference: https://blog.mindorks.com/implementing-eventbus-with-rxjava-rxbus-e6c940a94bd8

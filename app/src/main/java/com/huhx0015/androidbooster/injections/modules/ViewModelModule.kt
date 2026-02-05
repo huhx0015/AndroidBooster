@@ -1,18 +1,26 @@
 package com.huhx0015.androidbooster.injections.modules
 
-import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProviders
-import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel
+import androidx.databinding.PropertyChangeRegistry
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @Module
-class ViewModelModule {
-
-    /** MODULE METHODS _________________________________________________________________________  */
+@InstallIn(ViewModelComponent::class)
+object ViewModelModule {
 
     @Provides
-    fun providesApiRecyclerViewModel(activity: AppCompatActivity): ApiRecyclerViewModel {
-        return ViewModelProviders.of(activity).get(ApiRecyclerViewModel::class.java)
+    @ViewModelScoped
+    fun providesDisposable(): CompositeDisposable {
+        return CompositeDisposable()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun providesPropertyChangeRegistry(): PropertyChangeRegistry {
+        return PropertyChangeRegistry()
     }
 }

@@ -1,14 +1,16 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
 apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+apply plugin: 'com.google.dagger.hilt.android'
 
 android {
     compileSdkVersion 36
     defaultConfig {
         applicationId "com.huhx0015.androidbooster"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 36
         versionCode 1
         versionName "1.0"
@@ -19,8 +21,7 @@ android {
         release {
             minifyEnabled false
             shrinkResources false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            zipAlignEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {

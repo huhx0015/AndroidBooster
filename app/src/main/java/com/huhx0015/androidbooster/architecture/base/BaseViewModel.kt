@@ -1,24 +1,19 @@
 package com.huhx0015.androidbooster.architecture.base
 
 import android.app.Application
-import android.content.Context
 import androidx.annotation.CallSuper
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.OnLifecycleEvent
-import com.huhx0015.androidbooster.application.AndroidApplication
-import com.huhx0015.androidbooster.injections.components.ActivityComponent
-import com.huhx0015.androidbooster.injections.components.DaggerActivityComponent
-import com.huhx0015.androidbooster.injections.modules.ActivityModule
-import com.huhx0015.androidbooster.injections.modules.ViewModelModule
 import javax.inject.Inject
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-open class BaseViewModel (application: Application) : AndroidViewModel(application), Observable {
+open class BaseViewModel @Inject constructor(
+    application: Application
+) : AndroidViewModel(application), Observable {
 
     /** CLASS VARIABLES ________________________________________________________________________  */
 
@@ -26,12 +21,6 @@ open class BaseViewModel (application: Application) : AndroidViewModel(applicati
     lateinit var disposable: CompositeDisposable
     @Inject
     lateinit var registry: PropertyChangeRegistry
-
-    /** INITIALIZATION METHODS _________________________________________________________________ **/
-
-    fun init() {
-        getComponent(getApplication()).inject(this) // DEPENDENCY INJECTION
-    }
 
     /** LIFECYCLE METHODS ______________________________________________________________________  */
 
@@ -70,15 +59,5 @@ open class BaseViewModel (application: Application) : AndroidViewModel(applicati
 
     protected fun notifyChangeAll() {
         registry.notifyChange(this, BR._all)
-    }
-
-    /** DEPENDENCY INJECTION METHODS ___________________________________________________________  */
-
-    private fun getComponent(context: Context): ActivityComponent {
-        return DaggerActivityComponent.builder()
-                .applicationComponent(AndroidApplication.get(context).component)
-                .activityModule(ActivityModule(context as AppCompatActivity))
-                .viewModelModule(ViewModelModule())
-                .build()
     }
 }

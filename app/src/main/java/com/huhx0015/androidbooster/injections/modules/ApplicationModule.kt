@@ -10,33 +10,25 @@ import com.huhx0015.androidbooster.rx.RxBus
 import javax.inject.Singleton
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
 @Module
-class ApplicationModule(private val application: Application) {
+@InstallIn(SingletonComponent::class)
+object ApplicationModule {
 
     /** MODULE METHODS _________________________________________________________________________  */
 
     @Provides
     @Singleton
-    fun providesApplication(): Application {
-        return application
-    }
-
-    @Provides
-    @Singleton
-    fun providesAssetMaanger(context: Context): AssetManager {
+    fun providesAssetMaanger(@ApplicationContext context: Context): AssetManager {
         return context.assets
     }
 
     @Provides
     @Singleton
-    fun providesContext(): Context {
-        return application.applicationContext
-    }
-
-    @Provides
-    @Singleton
-    fun providesConnectivityManager(context: Context): ConnectivityManager {
+    fun providesConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
         return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
@@ -48,7 +40,7 @@ class ApplicationModule(private val application: Application) {
 
     @Provides
     @Singleton
-    fun providesSharedPreferences(context: Context): SharedPreferences {
+    fun providesSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
         return context.getSharedPreferences(AndroidConstants.ANDROID_PREFERENCES,
                 Context.MODE_PRIVATE)
     }

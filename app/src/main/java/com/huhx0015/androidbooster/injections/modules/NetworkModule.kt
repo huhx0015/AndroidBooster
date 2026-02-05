@@ -1,13 +1,17 @@
 package com.huhx0015.androidbooster.injections.modules
 
-import android.app.Application
+import android.content.Context
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.huhx0015.androidbooster.constants.AndroidConstants
 import com.huhx0015.androidbooster.network.interfaces.RetrofitInterface
 import javax.inject.Singleton
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -15,20 +19,19 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 @Module
-class NetworkModule (private val baseUrl: String) {
+@InstallIn(SingletonComponent::class)
+object NetworkModule {
 
     /** CONSTANTS _______________________________________________________________________________ */
 
-    companion object {
-        private const val HTTP_CLIENT_CACHE = 10 * 1024 * 1024
-    }
+    private const val HTTP_CLIENT_CACHE = 10 * 1024 * 1024
 
     /** MODULE METHODS _________________________________________________________________________  */
 
     @Provides
     @Singleton
-    fun providesCache(application: Application): Cache {
-        return Cache(application.cacheDir, HTTP_CLIENT_CACHE.toLong())
+    fun providesCache(@ApplicationContext context: Context): Cache {
+        return Cache(context.cacheDir, HTTP_CLIENT_CACHE.toLong())
     }
 
     @Provides
@@ -55,7 +58,7 @@ class NetworkModule (private val baseUrl: String) {
     fun providesRetrofit(gson: Gson, client: OkHttpClient): Retrofit {
         return Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .baseUrl(baseUrl)
+                .baseUrl(AndroidConstants.API_URL)
                 .client(client)
                 .build()
     }

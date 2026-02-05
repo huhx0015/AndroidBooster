@@ -3,36 +3,37 @@ package com.huhx0015.androidbooster.injections.modules
 import android.content.Context
 import android.location.LocationManager
 import com.google.android.gms.location.LocationRequest
-import com.huhx0015.androidbooster.injections.scopes.ServiceScope
+import com.google.android.gms.location.Priority
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ServiceComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ServiceScoped
 
 @Module
-class LocationModule {
+@InstallIn(ServiceComponent::class)
+object LocationModule {
 
     /** CONSTANTS ______________________________________________________________________________  */
 
-    companion object {
-        private const val UPDATE_INTERVAL = 10000
-        private const val FASTEST_INTERVAL = 5000
-    }
+    private const val UPDATE_INTERVAL = 10000L
+    private const val FASTEST_INTERVAL = 5000L
 
     /** MODULE METHODS _________________________________________________________________________  */
 
     @Provides
-    @ServiceScope
-    fun providesLocationManager(context: Context): LocationManager {
+    @ServiceScoped
+    fun providesLocationManager(@ApplicationContext context: Context): LocationManager {
         return context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
     }
 
     @Provides
-    @ServiceScope
+    @ServiceScoped
     fun providesLocationRequest(): LocationRequest {
-        val request = LocationRequest()
-        request.priority = LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY
-        request.interval = UPDATE_INTERVAL.toLong()
-        request.fastestInterval = FASTEST_INTERVAL.toLong()
-        request.setExpirationDuration(UPDATE_INTERVAL.toLong())
-        return request
+        return LocationRequest.Builder(Priority.PRIORITY_BALANCED_POWER_ACCURACY, UPDATE_INTERVAL)
+            .setMinUpdateIntervalMillis(FASTEST_INTERVAL)
+            .setMaxUpdateDelayMillis(UPDATE_INTERVAL)
+            .build()
     }
 }

@@ -2,14 +2,13 @@ package com.huhx0015.androidbooster.viewmodel
 
 import android.app.Application
 import com.huhx0015.androidbooster.architecture.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-open class ApiRecyclerViewModel (application: Application) : BaseViewModel(application) {
-
-    /** INITIALIZATION __________________________________________________________________________ */
-
-    init {
-        init()
-    }
+@HiltViewModel
+open class ApiRecyclerViewModel @Inject constructor(
+    application: Application
+) : BaseViewModel(application) {
 
     /** CLASS VARIABLES ________________________________________________________________________  */
 

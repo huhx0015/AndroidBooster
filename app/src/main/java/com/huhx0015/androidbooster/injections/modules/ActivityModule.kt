@@ -2,52 +2,37 @@ package com.huhx0015.androidbooster.injections.modules
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.PropertyChangeRegistry
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import com.huhx0015.androidbooster.injections.scopes.ActivityScope
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ActivityComponent
+import dagger.hilt.android.qualifiers.ActivityContext
+import dagger.hilt.android.scopes.ActivityScoped
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 
 @Module
-class ActivityModule (private val activity: AppCompatActivity) {
+@InstallIn(ActivityComponent::class)
+object ActivityModule {
 
     /** MODULE METHODS _________________________________________________________________________  */
 
     @Provides
-    @ActivityScope
-    fun providesActivity(): AppCompatActivity {
-        return activity
-    }
-
-    @Provides
-    @ActivityScope
+    @ActivityScoped
     fun providesDisposable(): CompositeDisposable {
         return CompositeDisposable()
     }
 
     @Provides
-    @ActivityScope
-    fun providesContext(): Context {
-        return activity
+    @ActivityScoped
+    fun providesFragmentMananger(@ActivityContext context: Context): FragmentManager {
+        return (context as AppCompatActivity).supportFragmentManager
     }
 
     @Provides
-    @ActivityScope
-    fun providesFragmentMananger(activity: AppCompatActivity): FragmentManager {
-        return activity.supportFragmentManager
-    }
-
-    @Provides
-    @ActivityScope
-    fun providesLifecycle(activity: AppCompatActivity): Lifecycle {
-        return activity.lifecycle
-    }
-
-    @Provides
-    @ActivityScope
-    fun providesPropertyChangeRegistery(): PropertyChangeRegistry {
-        return PropertyChangeRegistry()
+    @ActivityScoped
+    fun providesLifecycle(@ActivityContext context: Context): Lifecycle {
+        return (context as AppCompatActivity).lifecycle
     }
 }
