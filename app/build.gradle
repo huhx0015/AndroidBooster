@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.devtools.ksp'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 36
     defaultConfig {
         applicationId "com.huhx0015.androidbooster"
-        minSdkVersion 14
-        targetSdkVersion 28
+        minSdkVersion 21
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
         multiDexEnabled true
@@ -24,12 +24,19 @@ android {
         }
     }
     compileOptions {
-        targetCompatibility = "8"
-        sourceCompatibility = "8"
+        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
     }
-    dataBinding {
-        enabled = true
+    kotlinOptions {
+        jvmTarget = '17'
     }
+    buildFeatures {
+        buildConfig = true
+        compose = true
+        dataBinding = true
+        viewBinding = true
+    }
+    namespace = "com.huhx0015.androidbooster"
     testOptions {
         unitTests.returnDefaultValues = true
     }
@@ -37,63 +44,67 @@ android {
 
 ext {
 
-    // ANDROIDX / SUPPORT
-    annotation_version = "1.0.2"
+    // ANDROID JETPACK
+    annotation_version = "1.9.1"
     cardview_version = "1.0.0"
-    constraintlayout_version = "1.1.3"
-    core_ktx_version = "1.0.2"
-    lifecycle_version = "2.0.0"
-    material_version = "1.0.0"
-    nav_version = "2.0.0"
-    paging_version = "2.1.0"
-    room_version = "2.0.0"
-    room_ktx_version = "2.1.0-rc01"
-    work_version = "2.0.1"
+    compose_activity_version = "1.12.3"
+    compose_bom_version = "2026.01.00"
+    constraintlayout_version = "2.2.1"
+    core_ktx_version = "1.17.0"
+    lifecycle_version = "2.10.0"
+    lifecycle_extensions_version = "2.2.0"
+    material_version = "1.13.0"
+    nav_version = "2.9.7"
+    paging_version = "3.4.0"
+    room_version = "2.8.4"
+    work_version = "2.11.1"
 
     // GOOGLE
-    gson_version = "2.8.5"
-    guava_version = "27.1-android"
+    gson_version = "2.13.2"
+    guava_version = "33.5.0-android"
 
     // GOOGLE PLAY SERVICES
-    gps_location_version = "16.0.0"
+    gps_location_version = "21.3.0"
 
     // DEPENDENCY INJECTION
-    dagger_version = "2.19"
+    hilt_nav_compose_version = "1.3.0"
     findbugs_version = "3.0.2"
 
     // IMAGE
-    glide_version = "4.9.0"
+    coil_version = "3.3.0"
+    glide_version = "4.16.0"
     subsampling_scale_image_view_version = "3.10.0"
 
     // LOGGING
-    timber_version = "4.7.1"
+    timber_version = "5.0.1"
+
+    // MOSHI
+    moshi_version = "1.15.2"
 
     // NETWORKING
-    okhttp_version = "3.14.1"
-    retrofit_version = "2.5.0"
-
-    // PERMISSIONS
-    permissions_dispatcher_version = "4.3.1"
+    okhttp_version = "5.3.2"
+    retrofit_version = "3.0.0"
 
     // PERFORMANCE
-    leak_canary_version = "1.6.2"
+    leak_canary_version = "2.14"
 
     // RXJAVA
-    rxandroid_version = "2.1.0"
-    rxbinding_version = "3.0.0-alpha2"
-    rxjava_version = "2.2.4"
-    rxrelay_version = "2.1.0"
+    rxandroid_version = "3.0.2"
+    rxbinding_version = "4.0.0"
+    rxjava_version = "3.1.12"
+    rxrelay_version = "3.0.1"
 
     // UI TESTING
-    espresso_version = "3.1.1"
-    runner_version = "1.1.1"
+    espresso_version = "3.6.1"
+    runner_version = "1.7.0"
 
     // UNIT TESTING
-    junit_version = "4.12"
-    rules_version = "1.1.0"
-    mockito_version = "2.28.2"
-    mockito_kotlin_version = "2.1.0"
-    roboelectric_version = "4.2"
+    core_testing_version = "2.2.0"
+    junit_version = "4.13.2"
+    rules_version = "1.7.0"
+    mockito_version = "5.21.0"
+    mockito_kotlin_version = "6.2.3"
+    roboelectric_version = "4.16.1"
 }
 
 dependencies {
@@ -102,34 +113,45 @@ dependencies {
     // CORE DEPENDENCIES
     // ---------------------------------------------------------------------------------------------
 
-    // ANDROIDX / SUPPORT
+    // ANDROID JETPACK
     implementation "androidx.annotation:annotation:$annotation_version"
     implementation "androidx.cardview:cardview:$cardview_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version"
+    implementation "androidx.paging:paging-rxjava3:$paging_version"
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    implementation "androidx.room:room-ktx:$room_ktx_version"
+    ksp "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-guava:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
     implementation "androidx.work:work-runtime-ktx:$work_version"
-    implementation "androidx.work:work-rxjava2:$work_version"
+    implementation "androidx.work:work-rxjava3:$work_version"
 
     // AUDIO
     implementation project(':hxaudio')
 
+    // COMPOSE
+    implementation platform("androidx.compose:compose-bom:$compose_bom_version")
+    implementation "androidx.compose.animation:animation-graphics"
+    implementation "androidx.compose.material3:material3"
+    implementation "androidx.compose.ui:ui-tooling"
+    implementation "androidx.compose.ui:ui-tooling-preview"
+    implementation "androidx.compose.runtime:runtime-livedata"
+    implementation "androidx.activity:activity-compose:$compose_activity_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version"
+
     // DEPENDENCY INJECTION
-    implementation "com.google.dagger:dagger:$dagger_version"
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-    implementation "com.google.code.findbugs:jsr305:$findbugs_version"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_nav_compose_version"
+    ksp "com.google.dagger:hilt-android-compiler:$hilt_version"
+    ksp "com.google.dagger:hilt-compiler:$hilt_version"
 
     // GOOGLE
     implementation "com.google.code.gson:gson:$gson_version"
@@ -139,49 +161,52 @@ dependencies {
     implementation "com.google.android.gms:play-services-location:$gps_location_version"
 
     // IMAGE
+    implementation "io.coil-kt.coil3:coil:$coil_version"
+    implementation "io.coil-kt.coil3:coil-svg:$coil_version"
+    implementation "io.coil-kt.coil3:coil-compose:$coil_version"
+    implementation "io.coil-kt.coil3:coil-network-okhttp:$coil_version"
     implementation "com.davemorrissey.labs:subsampling-scale-image-view:$subsampling_scale_image_view_version"
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     // LOGGING
     implementation "com.jakewharton.timber:timber:$timber_version"
 
+    // MOSHI:
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
+    ksp "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+
     // NETWORKING
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:okhttp-urlconnection:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version")
+    implementation "com.squareup.okhttp3:okhttp"
+    implementation "com.squareup.okhttp3:logging-interceptor"
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     // PERFORMANCE
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
-    releaseImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
-
-    // PERMISSIONS
-    implementation "org.permissionsdispatcher:permissionsdispatcher:$permissions_dispatcher_version"
-    kapt "org.permissionsdispatcher:permissionsdispatcher-processor:$permissions_dispatcher_version"
 
     // RXJAVA
-    implementation "com.jakewharton.rxbinding3:rxbinding:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-core:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-appcompat:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-material:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-recyclerview:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$rxbinding_version"
-    implementation "com.jakewharton.rxbinding3:rxbinding-viewpager:$rxbinding_version"
-    implementation "com.jakewharton.rxrelay2:rxrelay:$rxrelay_version"
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-core:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-appcompat:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-drawerlayout:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-material:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-recyclerview:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:$rxbinding_version"
+    implementation "com.jakewharton.rxbinding4:rxbinding-viewpager:$rxbinding_version"
+    implementation "com.jakewharton.rxrelay3:rxrelay:$rxrelay_version"
+    implementation "io.reactivex.rxjava3:rxandroid:$rxandroid_version"
+    implementation "io.reactivex.rxjava3:rxjava:$rxjava_version"
 
     // ---------------------------------------------------------------------------------------------
     // TEST DEPENDENCIES
     // ---------------------------------------------------------------------------------------------
 
-    // ANDROIDX / SUPPORT
-    testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+    // ANDROID JETPACK
+    testImplementation "androidx.arch.core:core-testing:$core_testing_version"
     testImplementation "androidx.paging:paging-common-ktx:$paging_version"
     testImplementation "androidx.room:room-testing:$room_version"
     androidTestImplementation "androidx.work:work-testing:$work_version"
@@ -203,10 +228,7 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$rules_version"
     androidTestImplementation "org.mockito:mockito-core:$mockito_version"
     testImplementation "org.mockito:mockito-core:$mockito_version"
-    androidTestImplementation "org.mockito:mockito-inline:$mockito_version"
-    testImplementation "org.mockito:mockito-inline:$mockito_version"
-    androidTestImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_version"
+    androidTestImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin_version"
+    testImplementation "org.mockito.kotlin:mockito-kotlin:$mockito_kotlin_version"
     testImplementation "org.robolectric:robolectric:$roboelectric_version"
-    testImplementation "com.squareup.leakcanary:leakcanary-android-no-op:$leak_canary_version"
 }

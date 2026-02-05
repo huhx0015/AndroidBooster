@@ -1,21 +1,26 @@
 buildscript {
-    ext.android_plugin_version = '3.4.1'
-    ext.kotlin_version = '1.3.31'
+    ext.android_plugin_version = '9.0.0'
+    ext.hilt_version = "2.59.1"
+    ext.kotlin_version = '2.2.21'
+    ext.ksp_version = '2.3.2'
 
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version"
+        classpath "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:$ksp_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
