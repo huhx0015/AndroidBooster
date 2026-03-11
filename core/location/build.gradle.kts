@@ -1,9 +1,10 @@
 plugins {
     id("com.android.library")
+    id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.huhx0015.androidbooster.audio"
+    namespace = "com.huhx0015.androidbooster.location"
     compileSdk = 36
 
     defaultConfig {
@@ -24,8 +25,15 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
+val hiltVersion = rootProject.extra["hilt_version"] as String
+
 dependencies {
-    implementation(files("hxaudio-v331.aar"))
+    implementation("androidx.core:core-ktx:1.17.0")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 }

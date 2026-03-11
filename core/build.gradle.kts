@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace = "com.huhx0015.androidbooster.audio"
+    namespace = "com.huhx0015.androidbooster"
     compileSdk = 36
 
     defaultConfig {
@@ -24,8 +24,4 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-}
-
-dependencies {
-    implementation(files("hxaudio-v331.aar"))
 }
