@@ -13,58 +13,73 @@ In addition, this project also includes a few handy utility classes, as well as 
 
 ### Libraries
 
-#### Android
+Dependencies currently in use in this codebase:
 
-* Android Jetpack: https://developer.android.com/jetpack
+#### Android Jetpack
+
+* [Android Jetpack](https://developer.android.com/jetpack) – Core KTX, AppCompat, Material, Fragment, Lifecycle, Navigation, Paging, WorkManager, Room, Data Binding, Compose (BOM, Material3, Activity, ViewModel)
+* [Architecture Components](https://developer.android.com/topic/architecture) – Lifecycle, ViewModel, LiveData
 
 #### Audio
 
-* HX Audio Player: https://github.com/huhx0015/HXAudioPlayer
+* [HX Audio Player](https://github.com/huhx0015/HXAudioPlayer) – Local AAR (hxaudio-v331)
 
 #### Dependency Injection
 
-* Hilt: https://dagger.dev/hilt/
-  
+* [Hilt](https://dagger.dev/hilt/) – Dagger Hilt with KSP
+* [Hilt Navigation Compose](https://developer.android.com/jetpack/androidx/releases/hilt) – Hilt integration for Jetpack Compose
+
 #### Images
 
-* Coil: https://coil-kt.github.io/coil/
-* Subsampling Scale Image View: https://github.com/davemorrissey/subsampling-scale-image-view
+* [Coil](https://coil-kt.github.io/coil/) – Image loading (core, SVG, Compose, OkHttp)
+* [Subsampling Scale Image View](https://github.com/davemorrissey/subsampling-scale-image-view) – Zoomable image view
 
 #### Logging
 
-* Timber: https://github.com/JakeWharton/timber
+* [Timber](https://github.com/JakeWharton/timber) – Logging utility
 
 #### Network
 
-* Moshi: https://github.com/square/moshi
-* OkHttp: https://github.com/square/okhttp
-* Retrofit 2: http://square.github.io/retrofit/
+* [OkHttp](https://github.com/square/okhttp) – HTTP client with logging interceptor
+* [Retrofit](https://square.github.io/retrofit/) – Type-safe HTTP client with Gson converter and RxJava3 adapter
+* [Gson](https://github.com/google/gson) – JSON serialization
+
+#### Persistence
+
+* [Room](https://developer.android.com/training/data-storage/room) – SQLite abstraction with RxJava3 and Guava support
+
+#### Reactive
+
+* [RxJava](https://github.com/ReactiveX/RxJava) – Reactive extensions
+* [RxAndroid](https://github.com/ReactiveX/RxAndroid) – RxJava bindings for Android
+* [RxRelay](https://github.com/JakeWharton/RxRelay) – RxJava Relay
+* [RxBinding](https://github.com/JakeWharton/RxBinding) – RxJava bindings for Android views (core, AppCompat, Material, RecyclerView, etc.)
+
+#### Coroutines
+
+* [Kotlinx Coroutines](https://github.com/Kotlin/kotlinx.coroutines) – Coroutines support for Android
+
+#### Google
+
+* [Guava](https://github.com/google/guava) – Google core libraries (Android)
+* [Play Services Location](https://developers.google.com/android/guides/releases) – Location services
 
 #### Performance
 
-* LeakCanary: https://github.com/square/leakcanary
-
-#### Permissions
-
-* Permissions Dispatcher: https://github.com/hotchemi/PermissionsDispatcher
-
-#### RX
-
-* RxJava: https://github.com/ReactiveX/RxJava
-* RxAndroid: https://github.com/ReactiveX/RxAndroid
-* RxBinding: https://github.com/JakeWharton/RxBinding
-* RxRelay: https://github.com/JakeWharton/RxRelay
+* [LeakCanary](https://github.com/square/leakcanary) – Memory leak detection (debug only)
 
 #### Testing
 
-* JUnit: https://github.com/junit-team/junit4
-* Mockito: https://github.com/mockito/mockito
-* Mockito-Kotlin: https://github.com/nhaarman/mockito-kotlin
-* Roboelectric: https://github.com/robolectric/robolectric
+* [JUnit](https://github.com/junit-team/junit4) – Unit testing
+* [Mockito](https://github.com/mockito/mockito) – Mocking framework
+* [Mockito-Kotlin](https://github.com/nhaarman/mockito-kotlin) – Kotlin extensions for Mockito
+* [Robolectric](https://github.com/robolectric/robolectric) – Unit tests for Android
+* [Espresso](https://developer.android.com/training/testing/espresso) – UI testing
+* [Arch Core Testing](https://developer.android.com/training/testing) – Architecture testing utilities
 
 ## License
 
-    Copyright 2019 Michael Huh
+    Copyright 2026 Michael Huh
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
