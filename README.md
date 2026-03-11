@@ -5,9 +5,23 @@ DEVELOPER: huhx0015
 
 ## Description
 
-Android Booster: This is a Android starter project that utilizes a basic MVP/MVVM/MVI/VIPER architecture framework and contains several popular Android libraries, including Hilt, Retrofit 2, RxJava 3, RxAndroid, RxRelay, Coil, Leak Canary, Timber, and other useful libraries.
+**Android Booster** is an Android starter project that provides a modular foundation for building production-ready apps. It offers multiple architecture patterns (MVI, MVVM, MVP, VIPER) with shared base classes, so you can choose the approach that fits each feature.
 
-In addition, this project also includes a few handy utility classes, as well as some basic test classes for testing ViewModel classes.
+The project is organized into core modules:
+
+* **Architecture** — Base classes for activities, fragments, and ViewModels; MVI (StateFlow, intents, events), MVVM, MVP, and VIPER contracts; Hilt DI modules; RxBus for event communication
+* **Audio** — HX Audio Player integration for music (HXMusic) and sound effects (HXSound) with lifecycle-aware playback
+* **Network** — Retrofit, OkHttp, and Gson with a shared `RetrofitInterface` and configurable base URL
+* **UI** — ApiRecyclerView activities/fragments for list screens, BindingUtils (Coil image loading), SnackbarUtils, DialogUtils, DisplayUtils, and UnitUtils
+* **Common** — AndroidConstants, SharedPreferences, ConnectivityManager, and other app-wide configuration
+* **Location** — LocationModule for LocationManager and LocationRequest in services
+* **Database** — Reserved for Room or other persistence
+
+Popular libraries include Hilt, Retrofit 2, RxJava 3, RxAndroid, RxRelay, Coil, Leak Canary, Timber, Jetpack (Lifecycle, ViewModel, Data Binding, Compose), and more. The project also includes utility classes and basic test classes for ViewModel testing.
+
+### Claude Skills Support
+
+This project includes **Claude skills** in `claude/skills/` to guide AI-assisted development. When the project is loaded in Claude Code (or compatible tools), these skills provide context on architecture patterns, audio usage, network setup, UI components, and common utilities. See the `claude/skills/` directory for available skills such as `androidbooster-architecture`, `androidbooster-audio`, `androidbooster-network`, and others.
 
 ## Resources
 
