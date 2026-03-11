@@ -1,6 +1,21 @@
-# Add project specific ProGuard rules here.
-# You can control the set of applied configuration files using the
-# proguardFiles setting in build.gradle.
-#
-# For more details, see
-#   http://developer.android.com/guide/developing/tools/proguard.html
+# Location module ProGuard rules.
+# For more details, see http://developer.android.com/guide/developing/tools/proguard.html
+
+# -----------------------------------------------------------------------------
+# HILT
+# -----------------------------------------------------------------------------
+
+-keep class *Hilt_* { *; }
+
+# -----------------------------------------------------------------------------
+# GOOGLE PLAY SERVICES LOCATION
+# -----------------------------------------------------------------------------
+
+-keep class com.google.android.gms.location.** { *; }
+-dontwarn com.google.android.gms.**
+
+# -----------------------------------------------------------------------------
+# PROJECT
+# -----------------------------------------------------------------------------
+
+-keep class com.huhx0015.androidbooster.location.** { *; }
