@@ -1,1 +1,4 @@
-include ':app', ':hxaudio'
+include ':app'
+include ':core'
+include ':core:network'
+include ':core:audio'

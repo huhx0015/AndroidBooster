@@ -135,8 +135,9 @@ dependencies {
     implementation "androidx.work:work-runtime-ktx:$work_version"
     implementation "androidx.work:work-rxjava3:$work_version"
 
-    // AUDIO
-    implementation project(':hxaudio')
+    // CORE MODULES
+    implementation project(':core:network')
+    implementation project(':core:audio')
 
     // COMPOSE
     implementation platform("androidx.compose:compose-bom:$compose_bom_version")
@@ -177,13 +178,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi-adapters:$moshi_version"
     ksp "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
-    // NETWORKING
-    implementation platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version")
-    implementation "com.squareup.okhttp3:okhttp"
-    implementation "com.squareup.okhttp3:logging-interceptor"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava3:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    // NETWORKING (Retrofit, OkHttp, Gson provided by core:network)
 
     // PERFORMANCE
     debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"

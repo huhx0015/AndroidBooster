@@ -7,3 +7,5 @@
 .externalNativeBuild
 /.idea/
 /app/build/
+/.vscode/
+/.kotlin/
