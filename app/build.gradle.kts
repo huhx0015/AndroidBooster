@@ -1,14 +1,17 @@
+import com.android.build.api.dsl.ApplicationExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("com.android.application")
-    id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.android")
-    id("org.jetbrains.kotlin.kapt")
-    id("org.jetbrains.kotlin.plugin.parcelize")
-    id("org.jetbrains.kotlin.plugin.compose")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.kotlin.parcelize)
+    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
 }
 
-android {
+extensions.configure<ApplicationExtension>("android") {
     compileSdk = 36
     namespace = "com.huhx0015.androidbooster"
 
@@ -38,10 +41,6 @@ android {
         targetCompatibility = JavaVersion.VERSION_17
     }
 
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-
     buildFeatures {
         buildConfig = true
         compose = true
@@ -54,64 +53,13 @@ android {
     }
 }
 
-val annotationVersion = "1.9.1"
-val cardviewVersion = "1.0.0"
-val composeActivityVersion = "1.12.3"
-val composeBomVersion = "2026.01.00"
-val constraintlayoutVersion = "2.2.1"
-val coreKtxVersion = "1.17.0"
-val lifecycleVersion = "2.10.0"
-val lifecycleExtensionsVersion = "2.2.0"
-val materialVersion = "1.13.0"
-val navVersion = "2.9.7"
-val pagingVersion = "3.4.0"
-val workVersion = "2.11.1"
-val gsonVersion = "2.13.2"
-val guavaVersion = "33.5.0-android"
-val hiltNavComposeVersion = "1.3.0"
-val findbugsVersion = "3.0.2"
-val coilVersion = "3.3.0"
-val glideVersion = "4.16.0"
-val subsamplingScaleImageViewVersion = "3.10.0"
-val timberVersion = "5.0.1"
-val moshiVersion = "1.15.2"
-val okhttpVersion = "5.3.2"
-val retrofitVersion = "3.0.0"
-val leakCanaryVersion = "2.14"
-val rxandroidVersion = "3.0.2"
-val rxbindingVersion = "4.0.0"
-val rxjavaVersion = "3.1.12"
-val rxrelayVersion = "3.0.1"
-val espressoVersion = "3.6.1"
-val runnerVersion = "1.7.0"
-val coreTestingVersion = "2.2.0"
-val junitVersion = "4.13.2"
-val rulesVersion = "1.7.0"
-val mockitoVersion = "5.21.0"
-val mockitoKotlinVersion = "6.2.3"
-val robolectricVersion = "4.16.1"
-val hiltVersion = rootProject.extra["hilt_version"] as String
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
 
 dependencies {
-    // ---------------------------------------------------------------------------------------------
-    // CORE DEPENDENCIES
-    // ---------------------------------------------------------------------------------------------
-
-    // ANDROID JETPACK
-    implementation("androidx.annotation:annotation:$annotationVersion")
-    implementation("androidx.cardview:cardview:$cardviewVersion")
-    implementation("androidx.constraintlayout:constraintlayout:$constraintlayoutVersion")
-    implementation("androidx.core:core-ktx:$coreKtxVersion")
-    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion")
-    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion")
-    implementation("com.google.android.material:material:$materialVersion")
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
-    implementation("androidx.paging:paging-runtime-ktx:$pagingVersion")
-    implementation("androidx.paging:paging-rxjava3:$pagingVersion")
-    implementation("androidx.work:work-runtime-ktx:$workVersion")
-    implementation("androidx.work:work-rxjava3:$workVersion")
 
     // CORE MODULES
     implementation(project(":core:network"))
@@ -122,83 +70,40 @@ dependencies {
     implementation(project(":core:location"))
     implementation(project(":core:common"))
 
-    // COMPOSE
-    implementation(platform("androidx.compose:compose-bom:$composeBomVersion"))
-    implementation("androidx.compose.animation:animation-graphics")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.compose.ui:ui-tooling")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.runtime:runtime-livedata")
-    implementation("androidx.activity:activity-compose:$composeActivityVersion")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
+    // ANDROIDX
+    implementation(libs.androidx.annotation)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.common.j8)
+    implementation(libs.androidx.lifecycle.extensions)
+    implementation(libs.androidx.lifecycle.reactivestreams.ktx)
+    implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.androidx.work.rxjava3)
 
-    // DEPENDENCY INJECTION
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    implementation("androidx.hilt:hilt-navigation-compose:$hiltNavComposeVersion")
-    ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
-    ksp("com.google.dagger:hilt-compiler:$hiltVersion")
-
-    // GOOGLE
-    implementation("com.google.code.gson:gson:$gsonVersion")
-    api("com.google.guava:guava:$guavaVersion")
-
-    // GOOGLE PLAY SERVICES (play-services-location provided by core:location)
-
-    // IMAGE
-    implementation("io.coil-kt.coil3:coil:$coilVersion")
-    implementation("io.coil-kt.coil3:coil-svg:$coilVersion")
-    implementation("io.coil-kt.coil3:coil-compose:$coilVersion")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:$coilVersion")
-    implementation("com.davemorrissey.labs:subsampling-scale-image-view:$subsamplingScaleImageViewVersion")
+    // HILT
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
 
     // LOGGING
-    implementation("com.jakewharton.timber:timber:$timberVersion")
-
-    // MOSHI
-    implementation("com.squareup.moshi:moshi:$moshiVersion")
-    implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
-    implementation("com.squareup.moshi:moshi-adapters:$moshiVersion")
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+    implementation(libs.timber)
 
     // PERFORMANCE
-    debugImplementation("com.squareup.leakcanary:leakcanary-android:$leakCanaryVersion")
+    debugImplementation(libs.leakcanary.android)
 
-    // RXJAVA
-    implementation("com.jakewharton.rxbinding4:rxbinding:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-core:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-appcompat:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-drawerlayout:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-material:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-recyclerview:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-slidingpanelayout:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-swiperefreshlayout:$rxbindingVersion")
-    implementation("com.jakewharton.rxbinding4:rxbinding-viewpager:$rxbindingVersion")
-    implementation("com.jakewharton.rxrelay3:rxrelay:$rxrelayVersion")
-    implementation("io.reactivex.rxjava3:rxandroid:$rxandroidVersion")
-    implementation("io.reactivex.rxjava3:rxjava:$rxjavaVersion")
-
-    // ---------------------------------------------------------------------------------------------
-    // TEST DEPENDENCIES
-    // ---------------------------------------------------------------------------------------------
-
-    // ANDROID JETPACK
-    testImplementation("androidx.arch.core:core-testing:$coreTestingVersion")
-    testImplementation("androidx.paging:paging-common-ktx:$pagingVersion")
-    androidTestImplementation("androidx.work:work-testing:$workVersion")
-
-    // UI TESTING
-    androidTestImplementation("androidx.test.espresso:espresso-core:$espressoVersion") {
+    // TESTING
+    androidTestImplementation(libs.androidx.test.espresso.core) {
         exclude(group = "com.google.code.findbugs", module = "jsr305")
     }
-    androidTestImplementation("androidx.test:runner:$runnerVersion")
-
-    // UNIT TESTING
-    androidTestImplementation("junit:junit:$junitVersion")
-    testImplementation("junit:junit:$junitVersion")
-    androidTestImplementation("androidx.test:rules:$rulesVersion")
-    androidTestImplementation("org.mockito:mockito-core:$mockitoVersion")
-    testImplementation("org.mockito:mockito-core:$mockitoVersion")
-    androidTestImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:$mockitoKotlinVersion")
-    testImplementation("org.robolectric:robolectric:$robolectricVersion")
+    androidTestImplementation(libs.androidx.test.rules)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.work.testing)
+    androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.mockito.core)
+    androidTestImplementation(libs.mockito.kotlin)
+    testImplementation(libs.androidx.arch.core.testing)
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.robolectric)
 }

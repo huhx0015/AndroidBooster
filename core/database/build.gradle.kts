@@ -1,10 +1,13 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
 }
 
-android {
+extensions.configure<LibraryExtension>("android") {
     namespace = "com.huhx0015.androidbooster.database"
     compileSdk = 36
 
@@ -26,23 +29,26 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
-val roomVersion = "2.8.4"
-
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
+    // ANDROIDX
+    implementation(libs.androidx.core.ktx)
 
     // ROOM
-    api("androidx.room:room-runtime:$roomVersion")
-    ksp("androidx.room:room-compiler:$roomVersion")
-    api("androidx.room:room-ktx:$roomVersion")
-    api("androidx.room:room-guava:$roomVersion")
-    api("androidx.room:room-rxjava3:$roomVersion")
+    api(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
+    api(libs.androidx.room.ktx)
+    api(libs.androidx.room.guava)
+    api(libs.androidx.room.rxjava3)
 
-    testImplementation("androidx.room:room-testing:$roomVersion")
-    testImplementation("junit:junit:4.13.2")
+    // TESTING
+    testImplementation(libs.androidx.room.testing)
+    testImplementation(libs.junit)
 }

@@ -1,11 +1,14 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.android)
 }
 
-android {
+extensions.configure<LibraryExtension>("android") {
     namespace = "com.huhx0015.androidbooster.common"
     compileSdk = 36
 
@@ -27,15 +30,23 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
-val hiltVersion = rootProject.extra["hilt_version"] as String
-
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    ksp("com.google.dagger:hilt-android-compiler:$hiltVersion")
+
+    // ANDROIDX
+    implementation(libs.androidx.core.ktx)
+
+    // HILT
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
+    // GOOGLE
+    api(libs.guava)
 }

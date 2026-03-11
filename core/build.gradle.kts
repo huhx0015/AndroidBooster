@@ -1,8 +1,10 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
-    id("com.android.library")
+    alias(libs.plugins.android.library)
 }
 
-android {
+extensions.configure<LibraryExtension>("android") {
     namespace = "com.huhx0015.androidbooster"
     compileSdk = 36
 

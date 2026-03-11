@@ -1,21 +1,12 @@
-buildscript {
-    extra.apply {
-        set("android_plugin_version", "9.0.0")
-        set("hilt_version", "2.59.1")
-        set("kotlin_version", "2.2.21")
-        set("ksp_version", "2.3.2")
-    }
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:${rootProject.extra["android_plugin_version"]}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${rootProject.extra["kotlin_version"]}")
-        classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:${rootProject.extra["kotlin_version"]}")
-        classpath("com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:${rootProject.extra["ksp_version"]}")
-        classpath("com.google.dagger:hilt-android-gradle-plugin:${rootProject.extra["hilt_version"]}")
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.kotlin.parcelize) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.hilt.android) apply false
 }
 
 allprojects {

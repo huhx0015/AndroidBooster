@@ -1,9 +1,12 @@
+import com.android.build.api.dsl.LibraryExtension
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
 }
 
-android {
+extensions.configure<LibraryExtension>("android") {
     namespace = "com.huhx0015.androidbooster.location"
     compileSdk = 36
 
@@ -25,15 +28,22 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "17"
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
     }
 }
 
-val hiltVersion = rootProject.extra["hilt_version"] as String
-
 dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    implementation("com.google.android.gms:play-services-location:21.3.0")
+
+    // ANDROIDX
+    implementation(libs.androidx.core.ktx)
+
+    // HILT
+    implementation(libs.hilt.android)
+
+    // GOOGLE PLAY SERVICES
+    implementation(libs.play.services.location)
 }
