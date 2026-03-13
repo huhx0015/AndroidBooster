@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.architecture.injections
+package com.huhx0015.androidbooster.architecture.modules
 
 import androidx.databinding.PropertyChangeRegistry
 import dagger.Module
