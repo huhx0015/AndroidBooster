@@ -15,6 +15,7 @@ When working in this project, apply the following skills based on context:
 | `androidbooster-common` | Constants, SharedPreferences, app-wide config |
 | `androidbooster-ui` | List screens, image loading, dialogs, snackbars, display utils |
 | `androidbooster-location` | Location services, LocationManager, LocationRequest |
+| `androidbooster-localization` | Adding/changing strings.xml; propagating translations to locale directories |
 
 ## Module Structure
 
