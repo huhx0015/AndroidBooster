@@ -70,7 +70,7 @@ Use `architecture/event/RxBus.kt` for cross-component event communication.
 
 ## Dependency Injection
 
-Hilt modules in `architecture/injections/`:
+Hilt modules in `architecture/modules/`:
 
 - `ActivityModule`, `FragmentModule`, `ViewModelModule`, `RxBusModule`
 
