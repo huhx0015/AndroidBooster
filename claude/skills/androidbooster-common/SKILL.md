@@ -15,7 +15,7 @@ description: Common constants, DI modules, and shared utilities for AndroidBoost
 
 ## ApplicationModule
 
-`core/common/.../injections/ApplicationModule.kt` provides:
+`core/common/.../module/ApplicationModule.kt` provides:
 
 - `AssetManager`
 - `ConnectivityManager`

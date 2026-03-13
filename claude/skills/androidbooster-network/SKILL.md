@@ -11,7 +11,7 @@ Define API endpoints in `core/network/src/main/kotlin/com/huhx0015/androidbooste
 
 ## NetworkModule
 
-`core/network/.../injections/NetworkModule.kt` provides:
+`core/network/.../modules/NetworkModule.kt` provides:
 
 - `Retrofit` with base URL from `AndroidConstants.API_URL`
 - `Gson` with `LOWER_CASE_WITH_UNDERSCORES` field naming
