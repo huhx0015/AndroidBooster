@@ -1,14 +1,16 @@
 package com.huhx0015.androidbooster.viewmodel
 
 import android.app.Application
-import com.huhx0015.androidbooster.architecture.base.BaseViewModel
+import androidx.databinding.PropertyChangeRegistry
+import com.huhx0015.androidbooster.architecture.viewmodel.DataBindingViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 open class ApiRecyclerViewModel @Inject constructor(
-    application: Application
-) : BaseViewModel(application) {
+    application: Application,
+    registry: PropertyChangeRegistry
+) : DataBindingViewModel(application, registry) {
 
     /** CLASS VARIABLES ________________________________________________________________________  */
 

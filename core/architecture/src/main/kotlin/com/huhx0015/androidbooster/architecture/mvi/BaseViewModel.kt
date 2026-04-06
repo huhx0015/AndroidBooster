@@ -14,7 +14,6 @@ abstract class BaseViewModel<S : BaseState, I : BaseIntent, E : BaseEvent> : Vie
 
   private val intentChannel = Channel<I>(Channel.UNLIMITED)
 
-
   init {
     viewModelScope.launch {
       intentChannel.consumeAsFlow()

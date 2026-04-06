@@ -1,62 +1,6 @@
 package com.huhx0015.androidbooster.architecture.base
 
 import android.app.Application
-import androidx.annotation.CallSuper
-import androidx.databinding.Observable
-import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.OnLifecycleEvent
-import javax.inject.Inject
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 
-open class BaseViewModel @Inject constructor(
-    application: Application
-) : AndroidViewModel(application), Observable {
-
-    /** CLASS VARIABLES ________________________________________________________________________  */
-
-    @Inject
-    lateinit var disposable: CompositeDisposable
-    @Inject
-    lateinit var registry: PropertyChangeRegistry
-
-    /** LIFECYCLE METHODS ______________________________________________________________________  */
-
-    @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
-    fun onCreate() {}
-
-    @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    fun onResume() {}
-
-    @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
-    fun onPause() {}
-
-    @CallSuper
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    fun onDestroy() {
-        disposable.dispose()
-        removeOnPropertyChangedCallback(null)
-    }
-
-    /** DATABINDING METHODS ____________________________________________________________________  */
-
-    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback) {
-        registry.add(callback)
-    }
-
-    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        registry.remove(callback)
-    }
-
-    protected fun notifyChange(propertyId: Int) {
-        registry.notifyChange(this, propertyId)
-    }
-
-    protected fun notifyChangeAll() {
-        registry.notifyChange(this, 0) // 0 = BR._all (notify all properties)
-    }
-}
+open class BaseViewModel(application: Application) : AndroidViewModel(application)
