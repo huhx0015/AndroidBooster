@@ -32,6 +32,8 @@ Use `architecture/mvi/` when implementing Model-View-Intent:
 
 **Flow:** View sends intents via `sendIntent()` → ViewModel processes in `processIntent()` → ViewModel updates `state` and emits `events` → View observes `state` and handles `events`.
 
+For Compose-first MVI Activity screens (for example, `setContent`, `ComposeDataScreen`, snackbar handling from `BaseEvent`), also apply `androidbooster-ui-compose`.
+
 ## MVVM Architecture
 
 Use `architecture/mvvm/` when implementing Model-View-ViewModel:

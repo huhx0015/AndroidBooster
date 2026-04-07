@@ -1,11 +1,11 @@
-package com.huhx0015.androidbooster.ui.activities
+package com.huhx0015.androidbooster.ui.activities.apirecyclerview
 
 import android.os.Bundle
-import com.huhx0015.androidbooster.ui.R
-import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel
 import com.huhx0015.androidbooster.architecture.base.BaseActivity
-import javax.inject.Inject
+import com.huhx0015.androidbooster.ui.R
+import com.huhx0015.androidbooster.ui.activities.apirecyclerview.ApiRecyclerViewModel
 import retrofit2.Retrofit
+import javax.inject.Inject
 
 class ApiRecyclerViewActivity : BaseActivity() {
 

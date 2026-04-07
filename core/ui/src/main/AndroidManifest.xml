@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application>
         <activity
-            android:name="com.huhx0015.androidbooster.ui.activities.ApiRecyclerViewActivity"
+            android:name="com.huhx0015.androidbooster.ui.activities.apirecyclerview.ApiRecyclerViewActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.huhx0015.androidbooster.ui.activities.composedata.ComposeDataActivity"
             android:exported="false" />
     </application>
 </manifest>

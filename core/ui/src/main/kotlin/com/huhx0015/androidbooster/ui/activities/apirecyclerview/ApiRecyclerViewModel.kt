@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.viewmodel
+package com.huhx0015.androidbooster.ui.activities.apirecyclerview
 
 import android.app.Application
 import androidx.databinding.PropertyChangeRegistry

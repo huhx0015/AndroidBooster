@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.huhx0015.androidbooster.ui.R
 import com.huhx0015.androidbooster.architecture.base.BaseFragment
-import com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel
+import com.huhx0015.androidbooster.ui.activities.apirecyclerview.ApiRecyclerViewModel
 import javax.inject.Inject
 import retrofit2.Retrofit
 

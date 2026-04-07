@@ -6,7 +6,7 @@
         <import type="android.view.View" />
         <variable
             name="viewModel"
-            type="com.huhx0015.androidbooster.viewmodel.ApiRecyclerViewModel" />
+            type="com.huhx0015.androidbooster.ui.activities.apirecyclerview.ApiRecyclerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

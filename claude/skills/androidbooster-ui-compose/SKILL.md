@@ -80,3 +80,40 @@ fun UsersColumn(
 ```
 
 Use `ComposeDataRow` with the same state contract for horizontal lists.
+
+## Activity integration pattern (MVI + snackbar events)
+
+When using `ComposeDataColumn` in an Activity-driven MVI screen:
+
+- Use `BaseActivity` + `setContent { ... }` from `androidx.activity.compose.setContent`.
+- Collect `StateFlow` in composition using `collectAsState()`.
+- Route UI actions (`onRefresh`, `onLoadMore`) to ViewModel intents via `sendIntent(...)`.
+- Collect one-off events in `LaunchedEffect(viewModel)` and handle UI side effects there.
+- For `ShowMessage`-style events, use a `SnackbarHostState` + `Scaffold`.
+
+Reference shape:
+
+```kotlin
+setContent {
+    val state by viewModel.state.collectAsState()
+    val snackbarHostState = remember { SnackbarHostState() }
+
+    LaunchedEffect(viewModel) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is ComposeDataEvent.ShowMessage -> snackbarHostState.showSnackbar(event.message)
+            }
+        }
+    }
+
+    Scaffold(
+        snackbarHost = { SnackbarHost(snackbarHostState) }
+    ) { innerPadding ->
+        ComposeDataScreen(
+            state = state,
+            onIntent = viewModel::sendIntent,
+            modifier = Modifier.padding(innerPadding)
+        )
+    }
+}
+```

@@ -2,6 +2,7 @@ package com.huhx0015.androidbooster.viewmodel
 
 import android.app.Application
 import androidx.databinding.PropertyChangeRegistry
+import com.huhx0015.androidbooster.ui.activities.apirecyclerview.ApiRecyclerViewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
