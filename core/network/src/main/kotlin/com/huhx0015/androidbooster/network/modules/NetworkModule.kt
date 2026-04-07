@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.network.injections
+package com.huhx0015.androidbooster.network.modules
 
 import android.content.Context
 import com.google.gson.FieldNamingPolicy

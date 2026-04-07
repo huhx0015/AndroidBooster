@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.location.injections
+package com.huhx0015.androidbooster.location.modules
 
 import android.content.Context
 import android.location.LocationManager

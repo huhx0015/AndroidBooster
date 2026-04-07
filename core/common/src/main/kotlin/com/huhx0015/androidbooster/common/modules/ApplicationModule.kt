@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.common.injections
+package com.huhx0015.androidbooster.common.modules
 
 import android.content.Context
 import android.content.SharedPreferences

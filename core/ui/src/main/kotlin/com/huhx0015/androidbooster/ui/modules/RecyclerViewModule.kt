@@ -1,4 +1,4 @@
-package com.huhx0015.androidbooster.ui.injections
+package com.huhx0015.androidbooster.ui.modules
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager
