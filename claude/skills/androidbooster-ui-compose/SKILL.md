@@ -9,7 +9,7 @@ description: Compose lazy list components for AndroidBooster. Use when building 
 
 Use reusable Compose list components from `core/ui`:
 
-- `com.huhx0015.androidbooster.ui.compose.model.DataItem`
+- `com.huhx0015.androidbooster.model.DataItem`
 - `com.huhx0015.androidbooster.ui.compose.components.ComposeDataColumn`
 - `com.huhx0015.androidbooster.ui.compose.components.ComposeDataRow`
 
@@ -49,7 +49,7 @@ Pass these state values to either component:
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import com.huhx0015.androidbooster.ui.compose.components.ComposeDataColumn
-import com.huhx0015.androidbooster.ui.compose.model.DataItem
+import com.huhx0015.androidbooster.model.DataItem
 
 data class UserUiItem(
     override val id: Long,

@@ -51,6 +51,7 @@ dependencies {
 
     // CORE MODULES
     implementation(project(":core:architecture"))
+    implementation(project(":core:model"))
     implementation(project(":core:network"))
 
     // ANDROIDX

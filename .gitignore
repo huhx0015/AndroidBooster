@@ -9,3 +9,4 @@
 /app/build/
 /.vscode/
 /.kotlin/
+/core/model/build/

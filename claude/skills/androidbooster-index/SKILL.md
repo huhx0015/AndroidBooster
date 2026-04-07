@@ -23,7 +23,8 @@ When working in this project, apply the following skills based on context:
 - `core/architecture` — MVI, MVVM, MVP, VIPER, base classes, DI
 - `core/audio` — HX Audio Player (hxaudio-v331.aar)
 - `core/network` — Retrofit, OkHttp, Gson
-- `core/ui` — ApiRecyclerView, ComposeDataColumn, ComposeDataRow, DataItem, BindingUtils, DialogUtils, SnackbarUtils, DisplayUtils, UnitUtils
+- `core/ui` — ApiRecyclerView, ComposeDataColumn, ComposeDataRow, BindingUtils, DialogUtils, SnackbarUtils, DisplayUtils, UnitUtils
+- `core/model` — Shared data contracts and model primitives (for example, `DataItem`)
 - `core/common` — AndroidConstants, ApplicationModule
 - `core/location` — LocationModule
 - `core/database` — (reserved)
