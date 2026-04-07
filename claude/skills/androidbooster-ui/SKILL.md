@@ -1,6 +1,6 @@
 ---
 name: androidbooster-ui
-description: UI components and utilities for AndroidBooster. Use when building list screens, image loading, dialogs, snackbars, or display/unit conversions.
+description: UI components and utilities for AndroidBooster. Use when building XML/DataBinding list screens, image loading, dialogs, snackbars, or display/unit conversions. For Compose lazy list components, use androidbooster-ui-compose.
 ---
 
 # AndroidBooster UI
